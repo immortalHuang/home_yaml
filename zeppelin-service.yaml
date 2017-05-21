@@ -2,10 +2,11 @@ kind: Service
 apiVersion: v1
 metadata:
   name: zeppelin
+  namespace: kube-system
 spec:
   ports:
     - port: 8090
       targetPort: 8080
   selector:
     component: zeppelin
-  type: NodePort
+  type: LoadBalancer

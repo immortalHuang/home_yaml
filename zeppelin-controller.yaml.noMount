@@ -2,7 +2,6 @@ kind: ReplicationController
 apiVersion: v1
 metadata:
   name: zeppelin-controller
-  namespace: kube-system
 spec:
   replicas: 1
   selector:
@@ -15,17 +14,9 @@ spec:
       containers:
         - name: zeppelin
           image: immortalhuang/zhiweicloud-zeppelin
-          volumeMounts:
-          - mountPath: "/opt/zeppelin-0.7.1-bin-all"
-            name: zeppelin
-            subPath: zeppelin
           ports:
             - containerPort: 8080
           resources:
             requests:
               cpu: 100m
           command: ["/opt/zeppelin-0.7.1-bin-all/bin/zeppelin.sh","--config","/opt/zeppelin-0.7.1-bin-all/conf"]
-      volumes:
-      - name: zeppelin
-        persistentVolumeClaim:
-          claimName: zeppelinclaim
