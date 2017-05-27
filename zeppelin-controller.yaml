@@ -1,0 +1,22 @@
+kind: ReplicationController
+apiVersion: v1
+metadata:
+  name: zeppelin-controller
+spec:
+  replicas: 1
+  selector:
+    component: zeppelin
+  template:
+    metadata:
+      labels:
+        component: zeppelin
+    spec:
+      containers:
+        - name: zeppelin
+          image: immortalhuang/zhiweicloud-zeppelin
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              cpu: 100m
+          command: ["/opt/zeppelin-0.7.1-bin-all/bin/zeppelin.sh","--config","/opt/zeppelin-0.7.1-bin-all/conf"]
