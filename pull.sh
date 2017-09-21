@@ -10,7 +10,7 @@ for imageName in ${images[@]} ; do
     a=$imageName
     aa=`echo $a | cut -d ":" -f 1`
     echo $aa                                                             
-    docker pull immortalhuang/$imageName
-    docker tag immortalhuang/$imageName gcr.io/google_containers/$imageName                                   
-    docker rmi immortalhuang/$imageName
+    docker pull gcr.mritd.me/$imageName
+    docker tag gcr.mritd.me/$imageName gcr.io/google_containers/$imageName
+    docker rmi gcr.mritd.me/$imageName
 done                                                                                                  
