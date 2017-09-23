@@ -1,0 +1,25 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: openface
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: openface
+    spec:
+      containers:
+        - name: openface
+          image: docker.io/bamos/openface
+          command: ["/bin/sh","-c"]
+          args: ["/root/openface/demos/web/start-servers.sh"]
+          resources:
+            limits:
+              cpu: 200m
+              memory: 128Mi
+          ports:
+          - containerPort: 9000
+            name: http
+          - containerPort: 8000
+            name: websocket

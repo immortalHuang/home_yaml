@@ -7,6 +7,7 @@ spec:
   ports:
     - port: 8090
       targetPort: 8080
+      nodePort: 30080
   selector:
     component: zeppelin
-  type: LoadBalancer
+  type: NodePort

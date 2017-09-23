@@ -1,0 +1,17 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: openface
+spec:
+  ports:
+    - port: 9000
+      targetPort: 9000
+      nodePort: 30009
+      name: http
+    - port: 8000
+      targetPort: 8000
+      nodePort: 30008
+      name: websocket
+  selector:
+    app: openface
+  type: NodePort
